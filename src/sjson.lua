@@ -1,0 +1,2 @@
+---@meta _
+---@diagnostic disable: lowercase-global
