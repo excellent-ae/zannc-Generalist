@@ -1,4 +1,5 @@
 ---@meta _
+zanncdwbl_Generalist = zanncdwbl_Generalist or {}
 
 ---@diagnostic disable-next-line: undefined-global
 local mods = rom.mods
@@ -39,6 +40,7 @@ local function on_ready()
 
 	import("mods/startingBan.lua")
 	import("mods/stackingChanges.lua")
+	import("mods/graspIncrease.lua")
 	import("sjson.lua")
 end
 

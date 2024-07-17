@@ -41,13 +41,22 @@ local function removeDiminishingReturns(tbl)
 	end
 end
 
+local hasLoaded = false
+
 modutil.mod.Path.Wrap("SetupMap", function(base)
 	--Doing this here so it can catch any boons added by other mods
 	--Add Options to remove all Stacking Negatives, just iterate over loot data and check if there is ever a mention of like IdenticalMultiplier or StackingMultiplier and set it to nil
+	if hasLoaded == false then
+		zanncdwbl_Generalist.orginalTraitData = DeepCopyTable(game.TraitData)
+		hasLoaded = true
+	end
+
 	if config.RemoveDiminishingReturns then
 		for _, trait in pairs(game.TraitData) do
 			removeDiminishingReturns(trait)
 		end
+	else
+		game.TraitData = DeepCopyTable(zanncdwbl_Generalist.orginalTraitData)
 	end
 
 	base()

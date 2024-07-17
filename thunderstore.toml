@@ -5,17 +5,17 @@ schemaVersion = "0.0.1"
 [package]
 namespace = "zannc"
 name = "Generalist"
-versionNumber = "0.0.1"
-description = ""
+versionNumber = "1.0.0"
+description = "Some General "QOL" changes, such as Starting Room Drop Manager, Max Grasp and Pom Stacking changes, all configurable through ImGUI"
 websiteUrl = "https://github.com/zanncdwbl/zannc-Generalist"
 containsNsfwContent = false
 
 [package.dependencies]
+Hell2Modding-Hell2Modding = "1.0.44"
 SGG_Modding-ModUtil = "4.0.0"
-Hell2Modding-Hell2Modding = "1.0.40"
+SGG_Modding-ENVY = "1.1.0"
 SGG_Modding-SJSON = "1.0.0"
 SGG_Modding-ReLoad = "1.0.2"
-SGG_Modding-ENVY = "1.1.0"
 
 
 [build]

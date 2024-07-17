@@ -16,4 +16,6 @@ return {
 	-- Stacking Upgrades
 	StackAmount = 3,
 	RemoveDiminishingReturns = true,
+	-- Max Grasp
+	MaxGrasp = 30,
 }
