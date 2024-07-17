@@ -1,5 +1,6 @@
 ---@meta _
 ---@diagnostic disable: lowercase-global
+
 local mods = rom.mods
 local practicalGods = mods["zannc-Practical_Gods"]
 

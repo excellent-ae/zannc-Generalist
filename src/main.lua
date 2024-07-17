@@ -37,7 +37,8 @@ local function on_ready()
 	end
 	import_as_fallback(rom.game)
 
-	import("ready.lua")
+	import("mods/startingBan.lua")
+	import("mods/stackingChanges.lua")
 	import("sjson.lua")
 end
 
@@ -46,8 +47,6 @@ local function on_reload()
 		return
 	end
 	import_as_fallback(rom.game)
-
-	import("reload.lua")
 end
 
 local loader = reload.auto_single()
