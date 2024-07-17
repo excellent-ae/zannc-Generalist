@@ -6,7 +6,7 @@ schemaVersion = "0.0.1"
 namespace = "zannc"
 name = "Generalist"
 versionNumber = "1.0.0"
-description = "Some General "QOL" changes, such as Starting Room Drop Manager, Max Grasp and Pom Stacking changes, all configurable through ImGUI"
+description = "Increase pom levels! Increase max grasp! Pick your starting reward! Completely configurable through ImGUI"
 websiteUrl = "https://github.com/zanncdwbl/zannc-Generalist"
 containsNsfwContent = false
 

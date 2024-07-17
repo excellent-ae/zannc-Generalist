@@ -6,5 +6,7 @@ Starting Room Manger allows you to choose who/what you want to see when you star
 Pom of Power Changes allow you to change the +level for the poms, and allows you to optionally disable the diminishing returns that occur when you upgrade a boon too many times. <br>
 ----------------<br>
 Max Grasp allows you to change your maximum grasp to account for all the cards total, works even if you add new cards with different costs!
-<br><br>
+<br>
 <img src="https://github.com/zanncdwbl/zannc-Generalist/blob/main/gitimages/Hades2_J6OrG5uBSL.png">
+<br>
+Big thanks to Jowday for being the wall I bash my head against, ahoy
