@@ -47,6 +47,7 @@ local function on_reload()
 		return
 	end
 	import_as_fallback(rom.game)
+	import("imgui.lua")
 end
 
 local loader = reload.auto_single()
