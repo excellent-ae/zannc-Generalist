@@ -7,6 +7,8 @@ Pom of Power Changes allow you to change the +level for the poms, and allows you
 ----------------<br>
 Max Grasp allows you to change your maximum grasp to account for all the cards total, works even if you add new cards with different costs!
 <br><br><br>
-<img src="https://github.com/zanncdwbl/zannc-Generalist/blob/main/gitimages/Hades2_J6OrG5uBSL.png">
+<p align="center">
+   <img src="https://github.com/zanncdwbl/zannc-Generalist/download/images/Hades2_J6OrG5uBSL.png" width="80%" alt="Mod Image">
+</p>
 <br><br><br>
 Big thanks to Jowday for being the wall I bash my head against, ahoy
