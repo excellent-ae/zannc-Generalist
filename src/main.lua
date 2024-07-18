@@ -16,9 +16,6 @@ _PLUGIN = PLUGIN
 ---@module 'SGG_Modding-Hades2GameDef-Globals'
 game = rom.game
 
----@module 'SGG_Modding-SJSON'
-sjson = mods["SGG_Modding-SJSON"]
-
 ---@module 'SGG_Modding-ModUtil'
 modutil = mods["SGG_Modding-ModUtil"]
 
