@@ -1,6 +1,8 @@
 # Changelog
 
 ## [Unreleased]
+Fix crash when entering fields.<br>
+
 
 ## [1.0.0] - 2024-07-17
 

@@ -14,8 +14,8 @@ return {
 	Demeter = { Enabled = true },
 	Selene = { Enabled = true },
 	-- Stacking Upgrades
-	StackAmount = 3,
-	RemoveDiminishingReturns = true,
+	StackAmount = 1,
+	RemoveDiminishingReturns = false,
 	-- Max Grasp
 	MaxGrasp = 30,
 }

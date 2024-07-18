@@ -33,21 +33,14 @@ config = chalk.auto("config.lua")
 public.config = config
 
 local function on_ready()
-	if config.enabled == false then
-		return
-	end
 	import_as_fallback(rom.game)
 
 	import("mods/startingBan.lua")
 	import("mods/stackingChanges.lua")
 	import("mods/graspIncrease.lua")
-	import("sjson.lua")
 end
 
 local function on_reload()
-	if config.Enabled == false then
-		return
-	end
 	import_as_fallback(rom.game)
 	import("imgui.lua")
 end

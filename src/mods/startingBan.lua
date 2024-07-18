@@ -4,7 +4,7 @@
 local mods = rom.mods
 local practicalGods = mods["zannc-Practical_Gods"]
 
-local upgrades = {
+zanncdwbl_Generalist.upgrades = {
 	{ name = "WeaponUpgrade", custconfig = "Hammer" },
 	{ name = "SpellDrop", custconfig = "Selene" },
 
@@ -19,12 +19,12 @@ local upgrades = {
 	{ loot = "DemeterUpgrade", name = "Boon", custconfig = "Demeter" },
 }
 if practicalGods then
-	table.insert(upgrades, { loot = "ArtemisUpgrade", name = "Boon", custconfig = "Artemis" })
+	table.insert(zanncdwbl_Generalist.upgrades, { loot = "ArtemisUpgrade", name = "Boon", custconfig = "Artemis" })
 end
 
 local function pickRandomUpgrade()
 	local enabled = {}
-	for _, upgrade in ipairs(upgrades) do
+	for _, upgrade in ipairs(zanncdwbl_Generalist.upgrades) do
 		if config[upgrade.custconfig].Enabled then
 			table.insert(enabled, upgrade.name)
 		end
@@ -36,7 +36,7 @@ end
 
 local function pickRandomGod()
 	local enabled = {}
-	for _, upgrade in ipairs(upgrades) do
+	for _, upgrade in ipairs(zanncdwbl_Generalist.upgrades) do
 		if config[upgrade.custconfig].Enabled then
 			table.insert(enabled, upgrade.loot)
 		end
@@ -48,11 +48,15 @@ end
 
 modutil.mod.Path.Wrap("SpawnRoomReward", function(base, eventSource, args)
 	args = args or {}
-	if args.WaitUntilPickup then
-		args.RewardOverride = pickRandomUpgrade()
-		if args.RewardOverride == "Boon" then
-			args.LootName = pickRandomGod()
+	if game.CurrentRun.CurrentRoom.BiomeStartRoom then
+		if args.WaitUntilPickup then
+			args.RewardOverride = pickRandomUpgrade()
+			if args.RewardOverride == "Boon" then
+				args.LootName = pickRandomGod()
+			end
+			print("Spawning" .. args.LootName or args.RewardOverride)
 		end
 	end
-	base(eventSource, args)
+	-- Needs to return smh
+	return base(eventSource, args)
 end)

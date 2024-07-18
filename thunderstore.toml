@@ -5,7 +5,7 @@ schemaVersion = "0.0.1"
 [package]
 namespace = "zannc"
 name = "Generalist"
-versionNumber = "1.0.0"
+versionNumber = "1.0.1"
 description = "Increase pom levels! Increase max grasp! Pick your starting reward! Completely configurable through ImGUI"
 websiteUrl = "https://github.com/zanncdwbl/zannc-Generalist"
 containsNsfwContent = false
