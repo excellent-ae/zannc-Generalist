@@ -1,6 +1,7 @@
 # Changelog
 
 ## [Unreleased]
+Fix ImGUi issue with Starting Choice (I'm dumb)
 
 ## [1.0.1] - 2024-07-18
 

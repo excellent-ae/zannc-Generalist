@@ -9,7 +9,7 @@ end
 
 local function drawBoonManager()
 	for _, boon in ipairs(zanncdwbl_Generalist.upgrades) do
-		local value, checked = rom.ImGui.Checkbox(config[boon.custconfig], currentConfig.Enabled)
+		local value, checked = rom.ImGui.Checkbox(boon.custconfig, config[boon.custconfig].Enabled)
 		if checked then
 			config[boon.custconfig].Enabled = value
 		end
