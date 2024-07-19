@@ -1,6 +1,7 @@
 # Changelog
 
 ## [Unreleased]
+Fix crash when spawning boons cause of poor print lol (I'm dumb part 2)
 
 ## [1.0.2] - 2024-07-18
 

@@ -54,7 +54,13 @@ modutil.mod.Path.Wrap("SpawnRoomReward", function(base, eventSource, args)
 			if args.RewardOverride == "Boon" then
 				args.LootName = pickRandomGod()
 			end
-			print("Spawning" .. args.LootName or args.RewardOverride)
+			if args.LootName ~= nil then
+				print("Spawning " .. args.LootName)
+			else
+				if args.RewardOverride ~= nil then
+					print("Spawning " .. args.RewardOverride)
+				end
+			end
 		end
 	end
 	-- Needs to return smh
