@@ -46,23 +46,27 @@ local function pickRandomGod()
 	return enabled[randomIndex]
 end
 
-modutil.mod.Path.Wrap("SpawnRoomReward", function(base, eventSource, args)
-	args = args or {}
-	if game.CurrentRun.CurrentRoom.BiomeStartRoom then
-		if args.WaitUntilPickup then
-			args.RewardOverride = pickRandomUpgrade()
-			if args.RewardOverride == "Boon" then
-				args.LootName = pickRandomGod()
-			end
-			if args.LootName ~= nil then
-				print("Spawning " .. args.LootName)
-			else
-				if args.RewardOverride ~= nil then
-					print("Spawning " .. args.RewardOverride)
+function SpawnRoomRewardFunc()
+	modutil.mod.Path.Wrap("SpawnRoomReward", function(base, eventSource, args)
+		if config.StartingDropMod then
+			args = args or {}
+			if game.CurrentRun.CurrentRoom.BiomeStartRoom then
+				if args.WaitUntilPickup then
+					args.RewardOverride = pickRandomUpgrade()
+					if args.RewardOverride == "Boon" then
+						args.LootName = pickRandomGod()
+					end
+					local spawn = args.LootName or args.RewardOverride or "unknown"
+					print("Spawning: " .. spawn)
 				end
 			end
+			-- Needs to return smh
+			return base(eventSource, args)
+		else
+			print("Starting Reward mod is disabled")
+			return base(eventSource, args)
 		end
-	end
-	-- Needs to return smh
-	return base(eventSource, args)
-end)
+	end)
+end
+
+SpawnRoomRewardFunc()

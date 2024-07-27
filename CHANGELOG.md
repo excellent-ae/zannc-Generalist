@@ -1,6 +1,9 @@
 # Changelog
 
 ## [Unreleased]
+Added Config Options to Disable/Enable individual mods, and general ImGUI cleanup <br>
+Added Option to allow for more than 2 hammers per run (Default; you need to clear 2 biomes before you get another one)<br>
+Added Options to increase Consumable Gain by x100 (aka Bones/Ash/Psyche)
 
 ## [1.0.3] - 2024-07-19
 

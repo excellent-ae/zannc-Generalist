@@ -1,6 +1,17 @@
 -- Honestly cant think of a better way to do this with a wrap
 modutil.mod.Path.Override("GetMaxMetaUpgradeCost", function()
-	return config.MaxGrasp
+	if config.GraspCardMod then
+		return config.MaxGrasp
+	else
+		local metaUpgradeLimit = MetaUpgradeCostData.StartingMetaUpgradeLimit
+		for i = 1, GetCurrentMetaUpgradeLimitLevel() do
+			if MetaUpgradeCostData.MetaUpgradeLevelData[i] then
+				metaUpgradeLimit = metaUpgradeLimit + MetaUpgradeCostData.MetaUpgradeLevelData[i].CostIncrease
+			end
+		end
+		GameState.MaxMetaUpgradeCostCache = metaUpgradeLimit
+		return metaUpgradeLimit
+	end
 end)
 
 local function GetCardCostCount(tbl)

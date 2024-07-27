@@ -35,6 +35,8 @@ local function on_ready()
 	import("mods/startingBan.lua")
 	import("mods/stackingChanges.lua")
 	import("mods/graspIncrease.lua")
+	import("mods/hammerRun.lua")
+	import("mods/consumableIncrease.lua")
 end
 
 local function on_reload()
