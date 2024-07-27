@@ -33,6 +33,4 @@ Incase you really don't like grinding for those. <br><br>
 
 ---
 
-![Hades2_J6OrG5uBSL](https://github.com/user-attachments/assets/9df44567-d1ee-4579-b89e-b158eaddb589)
-<br><br><br>
 Big thanks to Jowday for being the wall I bash my head against, ahoy
