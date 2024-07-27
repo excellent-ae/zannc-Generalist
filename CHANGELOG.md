@@ -1,6 +1,9 @@
 # Changelog
 
 ## [Unreleased]
+
+## [1.0.4] - 2024-07-27
+
 Added Config Options to Disable/Enable individual mods, and general ImGUI cleanup <br>
 Added Option to allow for more than 2 hammers per run (Default; you need to clear 2 biomes before you get another one)<br>
 Added Options to increase Consumable Gain by x100 (aka Bones/Ash/Psyche)
@@ -24,7 +27,8 @@ Manage Starting Boon for runs so you can see only what you want to see at the st
 Manage your maximum grasp to allow you to select all the cards<br>
 Option to remove diminishing returns from all Boons and Change Level increase for Poms
 
-[unreleased]: https://github.com/zanncdwbl/zannc-Generalist/compare/1.0.3...HEAD
+[unreleased]: https://github.com/zanncdwbl/zannc-Generalist/compare/1.0.4...HEAD
+[1.0.4]: https://github.com/zanncdwbl/zannc-Generalist/compare/1.0.3...1.0.4
 [1.0.3]: https://github.com/zanncdwbl/zannc-Generalist/compare/1.0.2...1.0.3
 [1.0.2]: https://github.com/zanncdwbl/zannc-Generalist/compare/1.0.1...1.0.2
 [1.0.1]: https://github.com/zanncdwbl/zannc-Generalist/compare/1.0.0...1.0.1
