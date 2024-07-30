@@ -1,3 +1,12 @@
+-- ========= ImGUI CODE
+function drawMaxGrasp()
+	local value, selected = rom.ImGui.SliderInt("Grasp Amount", config.MaxGrasp, 10, zanncdwbl_Generalist.maxCardCost)
+	if selected then
+		config.MaxGrasp = value
+	end
+end
+-- ========= END
+
 -- Honestly cant think of a better way to do this with a wrap
 modutil.mod.Path.Override("GetMaxMetaUpgradeCost", function()
 	if config.GraspCardMod then

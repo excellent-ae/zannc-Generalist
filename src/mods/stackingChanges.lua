@@ -1,3 +1,19 @@
+-- ========= ImGUI CODE
+function drawPomUpgrades()
+	local value, selected
+
+	value, selected = rom.ImGui.SliderInt("Level(s)", config.StackAmount, 1, 20)
+	if selected then
+		config.StackAmount = value
+	end
+
+	value, checked = rom.ImGui.Checkbox("Remove diminishing returns (Poms scale infinitely)", config.RemoveDiminishingReturns)
+	if checked then
+		config.RemoveDiminishingReturns = value
+	end
+end
+-- ========= END
+
 local function setStackAmount(value)
 	-- In case the user is dumb and sets stack amount to 0
 	if value < 1 then

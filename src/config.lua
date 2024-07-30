@@ -6,6 +6,7 @@ return {
 	GraspCardMod = true,
 	HammerRateMod = true,
 	ConsumableMod = true,
+	ZoomMod = true,
 
 	-- Start Boon Manager
 	Hammer = { Enabled = true },
@@ -37,4 +38,7 @@ return {
 	AshAmount = 5,
 	PsycheAmount = 10,
 	BonesAmount = 50,
+
+	--Zoom Value
+	ZoomModValue = 0.75,
 }

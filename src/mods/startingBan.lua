@@ -1,6 +1,17 @@
 ---@meta _
 ---@diagnostic disable: lowercase-global
 
+-- ========= ImGUI CODE
+function drawBoonManager()
+	for _, boon in ipairs(zanncdwbl_Generalist.upgrades) do
+		local value, checked = rom.ImGui.Checkbox(boon.custconfig, config[boon.custconfig].Enabled)
+		if checked then
+			config[boon.custconfig].Enabled = value
+		end
+	end
+end
+-- ========= END
+
 local mods = rom.mods
 local practicalGods = mods["zannc-Practical_Gods"]
 
