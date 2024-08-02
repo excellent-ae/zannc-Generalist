@@ -2,6 +2,13 @@
 
 ## [Unreleased]
 
+Changed Description, Updated ReadME. <br>
+Added a zoom in/out mod, which allows you to see more or less of the map <br>
+Redid all of the ImGUI config, should be more streamlined <br>
+Fixed issue with the scaling mod in where Hephaestus and other cooldown boons would not reduce cooldown but increase instead. <br>
+Changed Scaling to allow for boons to be removed/added as the config is toggled on/off
+Added more resources to the Consumable Mod. <br>
+
 ## [1.0.4] - 2024-07-27
 
 Added Config Options to Disable/Enable individual mods, and general ImGUI cleanup <br>

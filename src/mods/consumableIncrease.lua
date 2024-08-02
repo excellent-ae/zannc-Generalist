@@ -3,18 +3,34 @@ local function ChangeConsumableAmountDropped()
 	if config.ConsumableMod then
 		-- Ash
 		game.ConsumableData.MetaCardPointsCommonDrop.AddResources.MetaCardPointsCommon = config.AshAmount
+		game.ConsumableData.MetaCardPointsCommonBigDrop.AddResources.MetaCardPointsCommon = config.AshAmount
 
 		-- Psyche
 		game.ConsumableData.MemPointsCommonDrop.AddResources.MemPointsCommon = config.PsycheAmount
+		game.ConsumableData.MemPointsCommonBigDrop.AddResources.MemPointsCommon = config.PsycheAmount
 
 		-- Bones
 		game.ConsumableData.MetaCurrencyDrop.AddResources.MetaCurrency = config.BonesAmount
+
+		-- Silver
+		game.ConsumableData.OreFSilverDrop.AddResources.OreFSilver = config.SilverAmount
+
+		-- Bronze
+		game.ConsumableData.OreNBronzeDrop.AddResources.OreNBronze = config.BronzeAmount
+
+		-- Iron
+		game.ConsumableData.OreOIronDrop.AddResources.OreOIron = config.IronAmount
+
+		-- Iron
+		game.ConsumableData.PlantFMolyDrop.AddResources.PlantFMoly = config.MolyAmount
 	else
 		-- Ash
 		game.ConsumableData.MetaCardPointsCommonDrop.AddResources.MetaCardPointsCommon = 5
+		game.ConsumableData.MetaCardPointsCommonBigDrop.AddResources.MetaCardPointsCommon = 10
 
 		-- Psyche
 		game.ConsumableData.MemPointsCommonDrop.AddResources.MemPointsCommon = 10
+		game.ConsumableData.MemPointsCommonBigDrop.AddResources.MemPointsCommon = 20
 
 		-- Bones
 		game.ConsumableData.MetaCurrencyDrop.AddResources.MetaCurrency = 50
@@ -26,6 +42,7 @@ ChangeConsumableAmountDropped()
 
 -- ========= ImGUI CODE
 function DrawConsumableChanges()
+	-- Max x100 amount
 	local function mainGUICode()
 		-- Ash Slider
 		local ashValue, ashSelected = rom.ImGui.SliderInt("Ash Amount", config.AshAmount, 5, 500)

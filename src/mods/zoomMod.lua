@@ -1,7 +1,7 @@
 local previousZoomModValue = config.ZoomModValue
 local hasLoaded = false
 local hasChanged = false
-local prevEnabled = false
+local prevEnabled = false -- Doesn't really do anything cause of ApplyZoom Button, but i wont remove it sinec it doesn't affect anything
 
 if not hasLoaded then
 	zanncdwbl_Generalist.origianRoomSet = DeepCopyTable(game.RoomSetData)
@@ -31,7 +31,7 @@ local function ChangeZoomAmount()
 	-- [[ First set is so that if you enabled the mod after disabling it, it will automatically adjust zoom
 	-- Second set is to allow for the camera to zoom in/out as you move the slider (very important to compare if its different or else it will lag)]]
 	if not prevEnabled or config.ZoomModValue ~= previousZoomModValue then
-		AdjustZoom({ Fraction = config.ZoomModValue, LerpTime = 0.02 })
+		AdjustZoom({ Fraction = config.ZoomModValue, LerpTime = 0.1 })
 		previousZoomModValue = config.ZoomModValue
 		prevEnabled = true
 
@@ -48,10 +48,18 @@ function DrawZoomMod()
 	if config.ZoomMod then
 		rom.ImGui.Text("Zoom Amount")
 		local value, selected = rom.ImGui.SliderFloat("Default: 0.75", config.ZoomModValue, 0, 2)
-		if selected then
-			config.ZoomModValue = value
+
+		-- This chunk of code is so that its done automatically, no button
+		-- if selected then
+		-- 	config.ZoomModValue = value
+		-- end
+		-- ChangeZoomAmount()
+
+		config.ZoomModValue = value
+
+		if rom.ImGui.Button("Apply Zoom") then
+			ChangeZoomAmount()
 		end
-		ChangeZoomAmount()
 	else
 		-- Reset everything
 		if prevEnabled then
