@@ -2,6 +2,8 @@
 
 ## [Unreleased]
 
+## [2.0.0] - 2024-08-08
+
 Changed Description, Updated ReadME. <br>
 Added a zoom in/out mod, which allows you to see more or less of the map <br>
 Redid all of the ImGUI config, should be more streamlined <br> 
@@ -34,7 +36,8 @@ Manage Starting Boon for runs so you can see only what you want to see at the st
 Manage your maximum grasp to allow you to select all the cards<br>
 Option to remove diminishing returns from all Boons and Change Level increase for Poms
 
-[unreleased]: https://github.com/zanncdwbl/zannc-Generalist/compare/1.0.4...HEAD
+[unreleased]: https://github.com/zanncdwbl/zannc-Generalist/compare/2.0.0...HEAD
+[2.0.0]: https://github.com/zanncdwbl/zannc-Generalist/compare/1.0.4...2.0.0
 [1.0.4]: https://github.com/zanncdwbl/zannc-Generalist/compare/1.0.3...1.0.4
 [1.0.3]: https://github.com/zanncdwbl/zannc-Generalist/compare/1.0.2...1.0.3
 [1.0.2]: https://github.com/zanncdwbl/zannc-Generalist/compare/1.0.1...1.0.2
