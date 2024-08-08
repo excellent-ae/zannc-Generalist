@@ -33,4 +33,8 @@ Incase you really don't like grinding for those. <br><br>
 
 ---
 
+## Zoom Functionality!
+Allows you to zoom in/out of your character, which applies to all chambers until you turn it off. <br><br>
+
+
 Big thanks to Jowday for being the wall I bash my head against, ahoy

@@ -37,6 +37,7 @@ local function on_ready()
 	import("mods/graspIncrease.lua")
 	import("mods/hammerRun.lua")
 	import("mods/consumableIncrease.lua")
+	import("mods/zoomMod.lua")
 end
 
 local function on_reload()

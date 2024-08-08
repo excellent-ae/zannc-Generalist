@@ -1,6 +1,15 @@
+local function setGraspAmount(value)
+	-- In case the user is dumb and sets grasp amount to less than 10
+	if value < 10 then
+		config.MaxGrasp = 10
+		print("Grasp Amount is less than 10.... why... setting to the game default of 10")
+	end
+end
+
 -- Honestly cant think of a better way to do this with a wrap
 modutil.mod.Path.Override("GetMaxMetaUpgradeCost", function()
 	if config.GraspCardMod then
+		setGraspAmount(config.MaxGrasp)
 		return config.MaxGrasp
 	else
 		local metaUpgradeLimit = MetaUpgradeCostData.StartingMetaUpgradeLimit
@@ -14,6 +23,7 @@ modutil.mod.Path.Override("GetMaxMetaUpgradeCost", function()
 	end
 end)
 
+-- This function is just to get the max grasp needed to activate all cards
 local function GetCardCostCount(tbl)
 	local maxAmount = 0
 	for k, v in pairs(tbl) do
@@ -28,4 +38,16 @@ local function GetCardCostCount(tbl)
 	return maxAmount
 end
 
-zanncdwbl_Generalist.maxCardCost = GetCardCostCount(game.MetaUpgradeCardData)
+local maxCardCost = GetCardCostCount(game.MetaUpgradeCardData)
+
+-- ========= ImGUI CODE
+function DrawMaxGrasp()
+	if not config.GraspCardMod then
+		return
+	end
+
+	local value, selected = rom.ImGui.SliderInt("Grasp Amount", config.MaxGrasp, 10, maxCardCost)
+	if selected then
+		config.MaxGrasp = value
+	end
+end
