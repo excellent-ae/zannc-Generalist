@@ -24,53 +24,21 @@ end
 local function drawMenu()
 	local value, checked
 
-	value, checked = rom.ImGui.Checkbox("Enable Starting Room Drop Manager", config.StartingDropMod)
-	if checked then
-		config.StartingDropMod = value
-	end
-	if config.StartingDropMod and rom.ImGui.CollapsingHeader("Starting Room Drop Manager") then
-		drawBoonManager()
-	end
+	-- Draw Starting Boon Mod
+	ImGUICheckbox("Enable Starting Room Drop Manager", "StartingDropMod", DrawBoonManager)
 
-	addSeperatorSpacing()
+	-- Draw Pom Mod
+	ImGUICheckbox("Enable Pom of Power Mod", "StackingMod", DrawPomUpgrades)
 
-	value, checked = rom.ImGui.Checkbox("Enable Pom of Power Changes/Mod", config.StackingMod)
-	if checked then
-		config.StackingMod = value
-	end
-	if config.StackingMod then
-		drawPomUpgrades()
-	end
+	-- Draw Max Grasp Mod
+	ImGUICheckbox("Enable Max Grasp Changes", "GraspCardMod", DrawMaxGrasp)
 
-	addSeperatorSpacing()
+	ImGUICheckbox("Enable Hammer to drop more than 2 times per run.", "HammerRateMod", DrawHammerDrops)
 
-	value, checked = rom.ImGui.Checkbox("Enable Max Grasp Changes", config.GraspCardMod)
-	if checked then
-		config.GraspCardMod = value
-	end
-	if config.GraspCardMod then
-		drawMaxGrasp()
-	end
+	-- Draw Consumables Mod
+	ImGUICheckbox("Enable Consumable Mod", "ConsumableMod", DrawConsumableChanges)
 
-	addSeperatorSpacing()
-
-	value, checked = rom.ImGui.Checkbox("Enable Hammer to drop more than 2 times per run.", config.HammerRateMod)
-	if checked then
-		config.HammerRateMod = value
-		EnableDisableHammerRunDrops()
-	end
-	if config.HammerRateMod then
-		drawHammerDrops()
-	end
-
-	addSeperatorSpacing()
-
-	-- Draw Consumables
-	DrawConsumableChanges()
-
-	addSeperatorSpacing()
-
-	-- Draw Zoom
+	-- Draw Zoom Mod
 	ImGUICheckbox("Enable Zoom Mod", "ZoomMod", DrawZoomMod)
 end
 

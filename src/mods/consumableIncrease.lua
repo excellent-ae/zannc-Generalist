@@ -1,49 +1,63 @@
 -- Set Custom Consumable (Ash/Psyche/Bones) amounts
 local function ChangeConsumableAmountDropped()
-	if config.ConsumableMod then
-		-- Ash
-		game.ConsumableData.MetaCardPointsCommonDrop.AddResources.MetaCardPointsCommon = config.AshAmount
-		game.ConsumableData.MetaCardPointsCommonBigDrop.AddResources.MetaCardPointsCommon = config.AshAmount
+	if not config.ConsumableMod then
+		return
+	end
 
-		-- Psyche
-		game.ConsumableData.MemPointsCommonDrop.AddResources.MemPointsCommon = config.PsycheAmount
-		game.ConsumableData.MemPointsCommonBigDrop.AddResources.MemPointsCommon = config.PsycheAmount
+	-- Ash
+	game.ConsumableData.MetaCardPointsCommonDrop.AddResources.MetaCardPointsCommon = config.AshAmount
+	game.ConsumableData.MetaCardPointsCommonBigDrop.AddResources.MetaCardPointsCommon = config.AshAmount
 
-		-- Bones
-		game.ConsumableData.MetaCurrencyDrop.AddResources.MetaCurrency = config.BonesAmount
+	-- Psyche
+	game.ConsumableData.MemPointsCommonDrop.AddResources.MemPointsCommon = config.PsycheAmount
+	game.ConsumableData.MemPointsCommonBigDrop.AddResources.MemPointsCommon = config.PsycheAmount
 
-		-- Silver
-		game.ConsumableData.OreFSilverDrop.AddResources.OreFSilver = config.SilverAmount
+	-- Bones
+	game.ConsumableData.MetaCurrencyDrop.AddResources.MetaCurrency = config.BonesAmount
 
-		-- Bronze
-		game.ConsumableData.OreNBronzeDrop.AddResources.OreNBronze = config.BronzeAmount
+	-- in a function so i can minimize
+	local function undone()
+		-- undone and im lazy to implement these, can honest to god just use ponymenu for resources
+		-- -- Silver
+		-- game.ConsumableData.OreFSilverDrop.AddResources.OreFSilver = config.SilverAmount
 
-		-- Iron
-		game.ConsumableData.OreOIronDrop.AddResources.OreOIron = config.IronAmount
+		-- -- Bronze
+		-- game.ConsumableData.OreNBronzeDrop.AddResources.OreNBronze = config.BronzeAmount
 
-		-- Iron
-		game.ConsumableData.PlantFMolyDrop.AddResources.PlantFMoly = config.MolyAmount
-	else
-		-- Ash
-		game.ConsumableData.MetaCardPointsCommonDrop.AddResources.MetaCardPointsCommon = 5
-		game.ConsumableData.MetaCardPointsCommonBigDrop.AddResources.MetaCardPointsCommon = 10
+		-- -- Iron
+		-- game.ConsumableData.OreOIronDrop.AddResources.OreOIron = config.IronAmount
 
-		-- Psyche
-		game.ConsumableData.MemPointsCommonDrop.AddResources.MemPointsCommon = 10
-		game.ConsumableData.MemPointsCommonBigDrop.AddResources.MemPointsCommon = 20
+		-- -- Iron
+		-- game.ConsumableData.PlantFMolyDrop.AddResources.PlantFMoly = config.MolyAmount
 
-		-- Bones
-		game.ConsumableData.MetaCurrencyDrop.AddResources.MetaCurrency = 50
+		-- MetaFabricDrop
+		--     GiftDrop
+		--     GiftPointsRareDrop
+		--     GiftPointsEpicDrop
+		--     WeaponPointsRareDrop
+		--     MixerFBossDrop
+		--     MixerGBossDrop
+		--     MixerHBossDrop
+		--     MixerIBossDrop
+		--     MixerNBossDrop
+		--     MixerOBossDrop
+		--     Mixer5CommonDrop
+		--     Mixer6CommonDrop
+		--     CardUpgradePointsDrop
+		--     FamiliarPointsDrop
+		--    CharonPointsDrop
 	end
 end
 
 -- Initial Run
-ChangeConsumableAmountDropped()
+ModUtil.LoadOnce(function()
+	ChangeConsumableAmountDropped()
+end)
 
 -- ========= ImGUI CODE
 function DrawConsumableChanges()
 	-- Max x100 amount
-	local function mainGUICode()
+	if config.ConsumableMod then
 		-- Ash Slider
 		local ashValue, ashSelected = rom.ImGui.SliderInt("Ash Amount", config.AshAmount, 5, 500)
 		if ashSelected then
@@ -64,33 +78,16 @@ function DrawConsumableChanges()
 			config.BonesAmount = bonesValue
 			ChangeConsumableAmountDropped()
 		end
-	end
+	else
+		-- Ash
+		game.ConsumableData.MetaCardPointsCommonDrop.AddResources.MetaCardPointsCommon = 5
+		game.ConsumableData.MetaCardPointsCommonBigDrop.AddResources.MetaCardPointsCommon = 10
 
-	local value, checked = rom.ImGui.Checkbox("Enable Consumable Gain Changes", config.ConsumableMod)
-	if checked then
-		config.ConsumableMod = value
-	end
-	if config.ConsumableMod then
-		mainGUICode()
+		-- Psyche
+		game.ConsumableData.MemPointsCommonDrop.AddResources.MemPointsCommon = 10
+		game.ConsumableData.MemPointsCommonBigDrop.AddResources.MemPointsCommon = 20
+
+		-- Bones
+		game.ConsumableData.MetaCurrencyDrop.AddResources.MetaCurrency = 50
 	end
 end
-
--- ========= ImGUI CODE
--- function DrawZoomMod()
--- 	if config.ZoomMod then
--- 		rom.ImGui.Text("Zoom Amount")
--- 		local value, selected = rom.ImGui.SliderFloat("Default: 0.75", config.ZoomModValue, 0, 2)
--- 		if selected then
--- 			config.ZoomModValue = value
--- 		end
--- 		ChangeZoomAmount()
--- 	else
--- 		-- Reset everything
--- 		if prevEnabled then
--- 			game.RoomSetData = DeepCopyTable(zanncdwbl_Generalist.origianRoomSet)
--- 			AdjustZoom({ Fraction = 0.75, LerpTime = 0.02 })
--- 			hasChanged = false
--- 			prevEnabled = false
--- 		end
--- 	end
--- end

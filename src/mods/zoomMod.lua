@@ -1,12 +1,6 @@
 local previousZoomModValue = config.ZoomModValue
-local hasLoaded = false
 local hasChanged = false
-local prevEnabled = false -- Doesn't really do anything cause of ApplyZoom Button, but i wont remove it sinec it doesn't affect anything
-
-if not hasLoaded then
-	zanncdwbl_Generalist.origianRoomSet = DeepCopyTable(game.RoomSetData)
-	hasLoaded = true
-end
+local prevEnabled = false
 
 local function roomZoomFraction()
 	for _, roomSetData in pairs(game.RoomSetData) do
@@ -17,8 +11,8 @@ local function roomZoomFraction()
 end
 
 -- doing a slider may or may not lag people heavily.
-local function ChangeZoomAmount()
-	if not config.ZoomMod then
+local function ChangeZoomAmount(zoom)
+	if not zoom then
 		return
 	end
 
@@ -40,8 +34,12 @@ local function ChangeZoomAmount()
 	end
 end
 
--- Initial Run
-ChangeZoomAmount()
+-- Initial Run, has to be outside of LoadOnce in order to automatically scale
+ChangeZoomAmount(config.ZoomMod)
+
+ModUtil.LoadOnce(function()
+	zanncdwbl_Generalist.origianRoomSet = DeepCopyTable(game.RoomSetData)
+end)
 
 -- ========= ImGUI CODE
 function DrawZoomMod()
@@ -58,7 +56,7 @@ function DrawZoomMod()
 		config.ZoomModValue = value
 
 		if rom.ImGui.Button("Apply Zoom") then
-			ChangeZoomAmount()
+			ChangeZoomAmount(config.ZoomMod)
 		end
 	else
 		-- Reset everything

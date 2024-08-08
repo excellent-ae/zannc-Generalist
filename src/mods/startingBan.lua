@@ -1,21 +1,11 @@
 ---@meta _
 ---@diagnostic disable: lowercase-global
 
--- ========= ImGUI CODE
-function drawBoonManager()
-	for _, boon in ipairs(zanncdwbl_Generalist.upgrades) do
-		local value, checked = rom.ImGui.Checkbox(boon.custconfig, config[boon.custconfig].Enabled)
-		if checked then
-			config[boon.custconfig].Enabled = value
-		end
-	end
-end
--- ========= END
-
 local mods = rom.mods
 local practicalGods = mods["zannc-Practical_Gods"]
 
-zanncdwbl_Generalist.upgrades = {
+-- These functions are just to define all rewards, then a func for choosing upgrade, and if its a boon then a random god
+local dropUpgrades = {
 	{ name = "WeaponUpgrade", custconfig = "Hammer" },
 	{ name = "SpellDrop", custconfig = "Selene" },
 
@@ -30,12 +20,12 @@ zanncdwbl_Generalist.upgrades = {
 	{ loot = "DemeterUpgrade", name = "Boon", custconfig = "Demeter" },
 }
 if practicalGods then
-	table.insert(zanncdwbl_Generalist.upgrades, { loot = "ArtemisUpgrade", name = "Boon", custconfig = "Artemis" })
+	table.insert(dropUpgrades, { loot = "ArtemisUpgrade", name = "Boon", custconfig = "Artemis" })
 end
 
 local function pickRandomUpgrade()
 	local enabled = {}
-	for _, upgrade in ipairs(zanncdwbl_Generalist.upgrades) do
+	for _, upgrade in ipairs(dropUpgrades) do
 		if config[upgrade.custconfig].Enabled then
 			table.insert(enabled, upgrade.name)
 		end
@@ -47,7 +37,7 @@ end
 
 local function pickRandomGod()
 	local enabled = {}
-	for _, upgrade in ipairs(zanncdwbl_Generalist.upgrades) do
+	for _, upgrade in ipairs(dropUpgrades) do
 		if config[upgrade.custconfig].Enabled then
 			table.insert(enabled, upgrade.loot)
 		end
@@ -57,27 +47,42 @@ local function pickRandomGod()
 	return enabled[randomIndex]
 end
 
-function SpawnRoomRewardFunc()
-	modutil.mod.Path.Wrap("SpawnRoomReward", function(base, eventSource, args)
-		if config.StartingDropMod then
-			args = args or {}
-			if game.CurrentRun.CurrentRoom.BiomeStartRoom then
-				if args.WaitUntilPickup then
-					args.RewardOverride = pickRandomUpgrade()
-					if args.RewardOverride == "Boon" then
-						args.LootName = pickRandomGod()
-					end
-					local spawn = args.LootName or args.RewardOverride or "unknown"
-					print("Spawning: " .. spawn)
+-- Main Chunk of code which overrides spawns
+modutil.mod.Path.Wrap("SpawnRoomReward", function(base, eventSource, args)
+	if config.StartingDropMod then
+		args = args or {}
+		if game.CurrentRun.CurrentRoom.BiomeStartRoom then
+			if args.WaitUntilPickup then
+				args.RewardOverride = pickRandomUpgrade()
+				if args.RewardOverride == "Boon" then
+					args.LootName = pickRandomGod()
 				end
+				local spawn = args.LootName or args.RewardOverride or "unknown"
+				print("Spawning: " .. spawn)
 			end
-			-- Needs to return smh
-			return base(eventSource, args)
-		else
-			print("Starting Reward mod is disabled")
-			return base(eventSource, args)
 		end
-	end)
-end
+		-- Needs to return smh
+		return base(eventSource, args)
+	else
+		print("Starting Reward mod is disabled")
+		return base(eventSource, args)
+	end
+end)
 
-SpawnRoomRewardFunc()
+-- ========= ImGUI CODE
+function DrawBoonManager()
+	if not config.StartingDropMod then
+		return
+	end
+
+	if not rom.ImGui.CollapsingHeader("Starting Room Drop Manager") then
+		return
+	end
+
+	for _, boon in ipairs(dropUpgrades) do
+		local value, checked = rom.ImGui.Checkbox(boon.custconfig, config[boon.custconfig].Enabled)
+		if checked then
+			config[boon.custconfig].Enabled = value
+		end
+	end
+end

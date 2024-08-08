@@ -37,12 +37,12 @@ local function on_ready()
 	import("mods/graspIncrease.lua")
 	import("mods/hammerRun.lua")
 	import("mods/consumableIncrease.lua")
+	import("mods/zoomMod.lua")
 end
 
 local function on_reload()
 	import_as_fallback(rom.game)
 	import("imgui.lua")
-	import("mods/zoomMod.lua")
 end
 
 local loader = reload.auto_single()
