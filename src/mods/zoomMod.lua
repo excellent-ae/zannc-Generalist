@@ -1,3 +1,7 @@
+ModUtil.LoadOnce(function()
+	zanncdwbl_Generalist.origianRoomSet = DeepCopyTable(game.RoomSetData)
+end)
+
 local previousZoomModValue = config.ZoomModValue
 local hasChanged = false
 local prevEnabled = false
@@ -8,6 +12,9 @@ local function roomZoomFraction()
 			roomData.ZoomFraction = config.ZoomModValue
 		end
 	end
+
+	game.HubRoomData.Hub_Main.ZoomFraction = config.ZoomModValue -- 1.23
+	game.HubRoomData.Hub_PreRun.ZoomFraction = config.ZoomModValue -- 0.95
 end
 
 -- doing a slider may or may not lag people heavily.
@@ -37,15 +44,21 @@ end
 -- Initial Run, has to be outside of LoadOnce in order to automatically scale
 ChangeZoomAmount(config.ZoomMod)
 
-ModUtil.LoadOnce(function()
-	zanncdwbl_Generalist.origianRoomSet = DeepCopyTable(game.RoomSetData)
-end)
+local function resetZoom()
+	game.RoomSetData = DeepCopyTable(zanncdwbl_Generalist.origianRoomSet)
+	game.HubRoomData.Hub_Main.ZoomFraction = config.ZoomModValue -- 1.23
+	game.HubRoomData.Hub_PreRun.ZoomFraction = config.ZoomModValue -- 0.95
 
--- ========= ImGUI CODE
+	AdjustZoom({ Fraction = 0.75, LerpTime = 0.1 })
+	hasChanged = false
+	prevEnabled = false
+end
+
+-- ! ImGUI CODE
 function DrawZoomMod()
 	if config.ZoomMod then
 		rom.ImGui.Text("Zoom Amount")
-		local value, selected = rom.ImGui.SliderFloat("Default: 0.75", config.ZoomModValue, 0, 2)
+		local value, selected = rom.ImGui.SliderFloat("Mod Default: 0.80", config.ZoomModValue, 0, 2)
 
 		-- This chunk of code is so that its done automatically, no button
 		-- if selected then
@@ -58,13 +71,15 @@ function DrawZoomMod()
 		if rom.ImGui.Button("Apply Zoom") then
 			ChangeZoomAmount(config.ZoomMod)
 		end
+
+		rom.ImGui.SameLine()
+
+		if rom.ImGui.Button("Reset Zoom") then
+			resetZoom()
+		end
 	else
-		-- Reset everything
 		if prevEnabled then
-			game.RoomSetData = DeepCopyTable(zanncdwbl_Generalist.origianRoomSet)
-			AdjustZoom({ Fraction = 0.75, LerpTime = 0.02 })
-			hasChanged = false
-			prevEnabled = false
+			resetZoom()
 		end
 	end
 end

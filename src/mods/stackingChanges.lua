@@ -58,7 +58,6 @@ local function RemoveAddTraits()
 end
 
 local function ApplyStackingMod(stacking, diminishing)
-	-- Stacking Poms Checks
 	if not stacking then
 		return
 	end
@@ -115,6 +114,7 @@ modutil.mod.Path.Wrap("CreateStackLoot", function(base, args)
 	end
 end)
 
+-- ! ImGUI CODE
 function DrawPomUpgrades()
 	if config.StackingMod then
 		rom.ImGui.Text("Pom Level Amount")
@@ -128,6 +128,20 @@ function DrawPomUpgrades()
 		if selected then
 			config.RemoveDiminishingReturns = value
 		end
+
+		rom.ImGui.Spacing()
+		rom.ImGui.TextWrapped("If there are any boons that are scaling incorrectly please submit a bug report.")
+		-- Aphrodite
+		--     Shameless Attitude
+		--     Healthy Rebound
+		-- Demeter
+		--     Snow Queen
+		-- Hestia
+		--     Cardio Gain
+		--     Hot Pot
+		--     Snuffed Candle
+		-- Hera
+		--     Uncommon Grace
 
 		-- Make sure its called only when it needs to be
 		if config.StackAmount ~= previousStackAmount or config.RemoveDiminishingReturns ~= previousDiminishing then

@@ -22,27 +22,19 @@ local function ImGUICheckbox(label, configKey, func)
 end
 
 local function drawMenu()
-	local value, checked
-
-	-- Draw Starting Boon Mod
-	ImGUICheckbox("Enable Starting Room Drop Manager", "StartingDropMod", DrawBoonManager)
-
-	-- Draw Pom Mod
-	ImGUICheckbox("Enable Pom of Power Mod", "StackingMod", DrawPomUpgrades)
-
-	-- Draw Max Grasp Mod
-	ImGUICheckbox("Enable Max Grasp Changes", "GraspCardMod", DrawMaxGrasp)
+    ImGUICheckbox("Enable Starting Room Drop Manager", "StartingDropMod", DrawBoonManager)
+    
+    ImGUICheckbox("Enable Max Grasp Changes", "GraspCardMod", DrawMaxGrasp)
+    
+    ImGUICheckbox("Enable Pom of Power Mod", "StackingMod", DrawPomUpgrades)
 
 	ImGUICheckbox("Enable Hammer to drop more than 2 times per run.", "HammerRateMod", DrawHammerDrops)
 
-	-- Draw Consumables Mod
 	ImGUICheckbox("Enable Consumable Mod", "ConsumableMod", DrawConsumableChanges)
 
-	-- Draw Zoom Mod
 	ImGUICheckbox("Enable Zoom Mod", "ZoomMod", DrawZoomMod)
 end
 
--- standalone
 rom.gui.add_imgui(function()
 	if rom.ImGui.Begin("Generalist") then
 		drawMenu()
@@ -50,7 +42,6 @@ rom.gui.add_imgui(function()
 	end
 end)
 
--- dropdown
 rom.gui.add_to_menu_bar(function()
 	if rom.ImGui.BeginMenu("Configure") then
 		drawMenu()

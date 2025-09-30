@@ -8,6 +8,7 @@ local practicalGods = mods["zannc-Practical_Gods"]
 local dropUpgrades = {
 	{ name = "WeaponUpgrade", custconfig = "Hammer" },
 	{ name = "SpellDrop", custconfig = "Selene" },
+	{ loot = "TrialUpgrade", name = "Boon", custconfig = "Chaos" },
 
 	{ loot = "ZeusUpgrade", name = "Boon", custconfig = "Zeus" },
 	{ loot = "HeraUpgrade", name = "Boon", custconfig = "Hera" },
@@ -18,10 +19,25 @@ local dropUpgrades = {
 	{ loot = "HermesUpgrade", name = "Boon", custconfig = "Hermes" },
 	{ loot = "ApolloUpgrade", name = "Boon", custconfig = "Apollo" },
 	{ loot = "DemeterUpgrade", name = "Boon", custconfig = "Demeter" },
+	{ loot = "AresUpgrade", name = "Boon", custconfig = "Ares" },
 }
 if practicalGods then
 	table.insert(dropUpgrades, { loot = "ArtemisUpgrade", name = "Boon", custconfig = "Artemis" })
 end
+
+local boonConfigs = {}
+
+local function initBoonConfigs()
+	for i, boon in ipairs(dropUpgrades) do
+		boonConfigs[i] = {
+			label = boon.custconfig,
+			configKey = boon.custconfig,
+			enabled = config[boon.custconfig].Enabled,
+		}
+	end
+end
+
+initBoonConfigs()
 
 local function pickRandomUpgrade()
 	local enabled = {}
@@ -69,20 +85,25 @@ modutil.mod.Path.Wrap("SpawnRoomReward", function(base, eventSource, args)
 	end
 end)
 
--- ========= ImGUI CODE
+-- ! ImGUI CODE
 function DrawBoonManager()
 	if not config.StartingDropMod then
 		return
 	end
 
-	if not rom.ImGui.CollapsingHeader("Starting Room Drop Manager") then
-		return
-	end
+	rom.ImGui.Spacing()
+	local open = rom.ImGui.CollapsingHeader("Starting Room Drop Manager")
+	if open then
+		rom.ImGui.BeginChild("BoonScrolling", 0, 220)
 
-	for _, boon in ipairs(dropUpgrades) do
-		local value, checked = rom.ImGui.Checkbox(boon.custconfig, config[boon.custconfig].Enabled)
-		if checked then
-			config[boon.custconfig].Enabled = value
+		for i, boonConfig in ipairs(boonConfigs) do
+			local value, checked = rom.ImGui.Checkbox(boonConfig.label, boonConfig.enabled)
+			if checked then
+				config[boonConfig.configKey].Enabled = value
+				boonConfigs[i].enabled = value
+			end
 		end
+
+		rom.ImGui.EndChild()
 	end
 end

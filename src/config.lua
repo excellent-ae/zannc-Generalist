@@ -1,15 +1,18 @@
 ---@meta zannc-config-Generalist
 return {
-	-- Set all Mods to true, but give people the option to enable/disable
-	StartingDropMod = true,
-	StackingMod = true,
-	GraspCardMod = true,
-	HammerRateMod = true,
-	ConsumableMod = true,
-	ZoomMod = true,
+	-- Set all Mods to false, but give people the option to enable/disable
+	StartingDropMod = false,
+	StackingMod = false,
+	GraspCardMod = false,
+	HammerRateMod = false,
+	ConsumableMod = false,
+	ZoomMod = false,
 
 	-- Start Boon Manager
 	Hammer = { Enabled = true },
+    Selene = { Enabled = true },
+    Chaos = { Enabled = true },
+
 	Zeus = { Enabled = true },
 	Hera = { Enabled = true },
 	Hestia = { Enabled = true },
@@ -19,8 +22,8 @@ return {
 	Artemis = { Enabled = true },
 	Hermes = { Enabled = true },
 	Apollo = { Enabled = true },
-	Demeter = { Enabled = true },
-	Selene = { Enabled = true },
+    Demeter = { Enabled = true },
+    Ares = { Enabled = true },
 
 	-- Stacking Upgrades
 	StackAmount = 1,
@@ -40,5 +43,5 @@ return {
 	BonesAmount = 50,
 
 	--Zoom Value
-	ZoomModValue = 0.75,
+	ZoomModValue = 0.80,
 }

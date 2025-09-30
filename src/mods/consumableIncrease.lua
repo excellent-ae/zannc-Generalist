@@ -54,7 +54,7 @@ ModUtil.LoadOnce(function()
 	ChangeConsumableAmountDropped()
 end)
 
--- ========= ImGUI CODE
+-- ! ImGUI CODE
 function DrawConsumableChanges()
 	-- Max x100 amount
 	if config.ConsumableMod then

@@ -56,7 +56,7 @@ ModUtil.LoadOnce(function()
 	EnableDisableHammerRunDrops()
 end)
 
--- ========= ImGUI CODE
+-- ! ImGUI CODE
 function DrawHammerDrops()
 	if config.HammerRateMod then
 		rom.ImGui.Text("NOTE, 4 = Chance of 4 Hammers per Biome.\nAs opposed to the default of 1 per 2 biomes")

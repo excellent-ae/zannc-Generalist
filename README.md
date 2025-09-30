@@ -38,3 +38,8 @@ Allows you to zoom in/out of your character, which applies to all chambers until
 ![Hades2_x0EeH4zo8W](https://github.com/user-attachments/assets/28d16d17-7637-4aa0-87b2-c2518e2a5f94)
 
 Big thanks to Jowday for being the wall I bash my head against, ahoy
+
+
+## Known Issues
+The zoom mod isn't working correctly during surface runs (zoom is being applied per room but at a lesser scale than user input).<br>
+Pom Slices from the shop don't seem to scale with Pom of Power changes.

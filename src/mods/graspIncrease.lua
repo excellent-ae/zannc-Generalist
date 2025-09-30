@@ -40,7 +40,7 @@ end
 
 local maxCardCost = GetCardCostCount(game.MetaUpgradeCardData)
 
--- ========= ImGUI CODE
+-- ! ImGUI CODE
 function DrawMaxGrasp()
 	if not config.GraspCardMod then
 		return
