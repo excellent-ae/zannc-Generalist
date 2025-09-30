@@ -29,7 +29,8 @@ Change Hammers to spawn more times per biome, rather than once per 2 biomes! <br
 
 ## Increase Bones/Ash/Psyche/Nectar gain up to x100
 Incase you really don't like grinding for those. <br><br>
-![image](https://github.com/user-attachments/assets/b984c1c3-7284-4449-a9f0-0f5ba775f1ab")
+<img width="503" height="231" alt="Hades2_ENExahiE85" src="https://github.com/user-attachments/assets/7eb2dbdd-0aee-405b-b992-9cee3e075898" />
+
 
 
 ---
