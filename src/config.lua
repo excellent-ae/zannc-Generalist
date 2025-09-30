@@ -10,8 +10,8 @@ return {
 
 	-- Start Boon Manager
 	Hammer = { Enabled = true },
-    Selene = { Enabled = true },
-    Chaos = { Enabled = true },
+	Selene = { Enabled = true },
+	Chaos = { Enabled = true },
 
 	Zeus = { Enabled = true },
 	Hera = { Enabled = true },
@@ -22,8 +22,8 @@ return {
 	Artemis = { Enabled = true },
 	Hermes = { Enabled = true },
 	Apollo = { Enabled = true },
-    Demeter = { Enabled = true },
-    Ares = { Enabled = true },
+	Demeter = { Enabled = true },
+	Ares = { Enabled = true },
 
 	-- Stacking Upgrades
 	StackAmount = 1,
@@ -41,6 +41,7 @@ return {
 	AshAmount = 5,
 	PsycheAmount = 10,
 	BonesAmount = 50,
+	NectarAmount = 1,
 
 	--Zoom Value
 	ZoomModValue = 0.80,

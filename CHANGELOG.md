@@ -9,7 +9,8 @@ Added Ares and Chaos to Starting Ban options. <br>
 Added a reset zoom button. <br>
 Fixed zoom being inconsistent through underworld runs when going into new levels. <br>
 Fixed zoom resetting per room in Crossroads. <br>
-Setting all mods in config to be disabled when first installing.
+Setting all mods in config to be disabled when first installing. <br>
+Added Nectar to configurable increased rewards.
 
 ## [2.0.0] - 2024-08-08
 

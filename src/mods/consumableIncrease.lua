@@ -15,9 +15,13 @@ local function ChangeConsumableAmountDropped()
 	-- Bones
 	game.ConsumableData.MetaCurrencyDrop.AddResources.MetaCurrency = config.BonesAmount
 
+	-- Nectar
+	game.ConsumableData.GiftDrop.AddResources.GiftPoints = config.NectarAmount
+
 	-- in a function so i can minimize
 	local function undone()
 		-- undone and im lazy to implement these, can honest to god just use ponymenu for resources
+
 		-- -- Silver
 		-- game.ConsumableData.OreFSilverDrop.AddResources.OreFSilver = config.SilverAmount
 
@@ -27,7 +31,7 @@ local function ChangeConsumableAmountDropped()
 		-- -- Iron
 		-- game.ConsumableData.OreOIronDrop.AddResources.OreOIron = config.IronAmount
 
-		-- -- Iron
+		-- -- Moly
 		-- game.ConsumableData.PlantFMolyDrop.AddResources.PlantFMoly = config.MolyAmount
 
 		-- MetaFabricDrop
@@ -78,6 +82,13 @@ function DrawConsumableChanges()
 			config.BonesAmount = bonesValue
 			ChangeConsumableAmountDropped()
 		end
+
+		-- Nectar Slider
+		local nectarValue, nectarSelected = rom.ImGui.SliderInt("Nectar Amount", config.NectarAmount, 1, 100)
+		if nectarSelected then
+			config.NectarAmount = nectarValue
+			ChangeConsumableAmountDropped()
+		end
 	else
 		-- Ash
 		game.ConsumableData.MetaCardPointsCommonDrop.AddResources.MetaCardPointsCommon = 5
@@ -89,5 +100,8 @@ function DrawConsumableChanges()
 
 		-- Bones
 		game.ConsumableData.MetaCurrencyDrop.AddResources.MetaCurrency = 50
+
+		-- Nectar
+		game.ConsumableData.GiftDrop.AddResources.GiftPoints = 1
 	end
 end
