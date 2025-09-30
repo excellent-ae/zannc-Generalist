@@ -13,7 +13,7 @@ containsNsfwContent = false
 [package.dependencies]
 Hell2Modding-Hell2Modding = "1.0.62"
 SGG_Modding-ModUtil = "4.0.1"
-LuaENVY-ENVY = "1.1.0"
+LuaENVY-ENVY = "1.2.0"
 SGG_Modding-Chalk = "2.1.1"
 SGG_Modding-ReLoad = "1.0.2"
 
