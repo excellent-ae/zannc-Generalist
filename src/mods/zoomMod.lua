@@ -23,6 +23,18 @@ local function ChangeZoomAmount(zoom)
 		return
 	end
 
+	for name, weapon in pairs(game.WeaponData) do
+		if weapon.FireCameraMotion then
+			weapon.FireCameraMotion.fromWeapon = true
+		end
+		if weapon.ChargeCameraMotion then
+			weapon.ChargeCameraMotion.fromWeapon = true
+		end
+		if weapon.ChargeCancelCameraMotion then
+			weapon.ChargeCancelCameraMotion.fromWeapon = true
+		end
+	end
+
 	-- Basically don't want/need it running ever iter, and to always have your config, don't want zoom reseting on refresh/new room
 	if not hasChanged then
 		roomZoomFraction()
@@ -43,6 +55,19 @@ end
 
 -- Initial Run, has to be outside of LoadOnce in order to automatically scale
 ChangeZoomAmount(config.ZoomMod)
+
+modutil.mod.Path.Wrap("DoCameraMotion", function(base, cameraData)
+	if not config.ZoomMod then
+		return base(cameraData)
+	end
+
+	if cameraData and cameraData.fromWeapon then
+		print("Early return - Weapon camera motion")
+		return
+	end
+
+	return base(cameraData)
+end)
 
 local function resetZoom()
 	game.RoomSetData = DeepCopyTable(zanncdwbl_Generalist.origianRoomSet)

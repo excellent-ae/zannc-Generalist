@@ -5,13 +5,13 @@ schemaVersion = "0.0.1"
 [package]
 namespace = "zannc"
 name = "Generalist"
-versionNumber = "2.1.0"
+versionNumber = "2.1.1"
 description = "Zoom Out! Increase pom levels! Increase max grasp! Pick your starting reward and Other Random Changes, completely configurable through ImGUI. Check README for more info!"
 websiteUrl = "https://github.com/zanncdwbl/zannc-Generalist"
 containsNsfwContent = false
 
 [package.dependencies]
-Hell2Modding-Hell2Modding = "1.0.62"
+Hell2Modding-Hell2Modding = "1.0.64"
 SGG_Modding-ModUtil = "4.0.1"
 LuaENVY-ENVY = "1.2.0"
 SGG_Modding-Chalk = "2.1.1"

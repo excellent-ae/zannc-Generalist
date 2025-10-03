@@ -2,6 +2,8 @@
 
 ## [Unreleased]
 
+Dirty fix to solve issue with some weapon attacks zooming in/out with the zoom mod.
+
 ## [2.1.0] - 2025-09-30
 
 Update to 1.0! <br>
