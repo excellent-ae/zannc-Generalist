@@ -2,6 +2,9 @@
 
 ## [Unreleased]
 
+Added a new option to disable the "Untapped Potential" screen when you can enable more arcana cards.
+Added a dirty fix to stop a Hidden? Random trait that adds max mana/health when enabling/disabling diminishing returns.
+
 ## [2.1.1] - 2025-10-03
 
 Dirty fix to solve issue with some weapon attacks zooming in/out with the zoom mod.

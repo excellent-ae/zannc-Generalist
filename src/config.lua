@@ -31,6 +31,7 @@ return {
 
 	-- Max Grasp
 	MaxGrasp = 30,
+	DisableGraspCheck = true,
 
 	-- [[ Hammer Amount to add, note there are already 2 hammer spawns, one is once per 2 biome clears
 	-- and 1 which removes itself after the first spawn ]]

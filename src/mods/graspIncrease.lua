@@ -23,6 +23,14 @@ modutil.mod.Path.Override("GetMaxMetaUpgradeCost", function()
 	end
 end)
 
+modutil.mod.Path.Wrap("ShouldShowMetaUpgradeCapacityHint", function(base, screen)
+	if config.GraspCardMod and config.DisableGraspCheck then
+		return false
+	else
+		return base(screen)
+	end
+end)
+
 -- This function is just to get the max grasp needed to activate all cards
 local function GetCardCostCount(tbl)
 	local maxAmount = 0
@@ -49,5 +57,12 @@ function DrawMaxGrasp()
 	local value, selected = rom.ImGui.SliderInt("Grasp Amount", config.MaxGrasp, 10, maxCardCost)
 	if selected then
 		config.MaxGrasp = value
+	end
+
+	rom.ImGui.Spacing()
+
+	local value, selected = rom.ImGui.Checkbox("Disable 'Untapped Potential' when you can select more cards.", config.DisableGraspCheck)
+	if selected then
+		config.DisableGraspCheck = value
 	end
 end

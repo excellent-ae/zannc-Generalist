@@ -44,4 +44,5 @@ Big thanks to Jowday for being the wall I bash my head against, ahoy
 
 ## Known Issues
 The zoom mod isn't working correctly during surface runs (zoom is being applied per room but at a lesser scale than user input).<br>
-Pom Slices from the shop don't seem to scale with Pom of Power changes.
+Pom Slices from the shop don't seem to scale with Pom of Power changes.<br>
+Hammers can spwan in multiple doors at once.

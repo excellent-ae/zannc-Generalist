@@ -74,7 +74,7 @@ local function resetZoom()
 	game.HubRoomData.Hub_Main.ZoomFraction = config.ZoomModValue -- 1.23
 	game.HubRoomData.Hub_PreRun.ZoomFraction = config.ZoomModValue -- 0.95
 
-	AdjustZoom({ Fraction = 0.75, LerpTime = 0.1 })
+	AdjustZoom({ Fraction = 0.8, LerpTime = 0.1 })
 	hasChanged = false
 	prevEnabled = false
 end

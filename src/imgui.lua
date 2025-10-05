@@ -22,11 +22,11 @@ local function ImGUICheckbox(label, configKey, func)
 end
 
 local function drawMenu()
-    ImGUICheckbox("Enable Starting Room Drop Manager", "StartingDropMod", DrawBoonManager)
-    
-    ImGUICheckbox("Enable Max Grasp Changes", "GraspCardMod", DrawMaxGrasp)
-    
-    ImGUICheckbox("Enable Pom of Power Mod", "StackingMod", DrawPomUpgrades)
+	ImGUICheckbox("Enable Starting Room Drop Manager", "StartingDropMod", DrawBoonManager)
+
+	ImGUICheckbox("Enable Max Grasp Changes", "GraspCardMod", DrawMaxGrasp)
+
+	ImGUICheckbox("Enable Pom of Power Mod", "StackingMod", DrawPomUpgrades)
 
 	ImGUICheckbox("Enable Hammer to drop more than 2 times per run.", "HammerRateMod", DrawHammerDrops)
 

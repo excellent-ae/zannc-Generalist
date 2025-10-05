@@ -25,7 +25,6 @@ local function removeDiminishingReturns(tbl)
 					end
 				end
 			end
-			-- Recursively check nested tables
 			removeDiminishingReturns(v)
 		end
 	end
@@ -34,7 +33,7 @@ end
 local function RemoveAddTraits()
 	local traitsToProcess = {}
 	for i, currentTraitData in pairs(CurrentRun.Hero.Traits) do
-		if currentTraitData.Slot ~= "Familiar" and currentTraitData.Slot ~= "Aspect" and currentTraitData.Slot ~= "Keepsake" then
+		if currentTraitData.Slot ~= "Familiar" and currentTraitData.Slot ~= "Aspect" and currentTraitData.Slot ~= "Keepsake" and currentTraitData.Name ~= "RoomRewardMaxManaTrait" and currentTraitData.Name ~= "RoomRewardMaxHealthTrait" then
 			table.insert(traitsToProcess, currentTraitData)
 		end
 	end
@@ -42,6 +41,7 @@ local function RemoveAddTraits()
 	for i, currentTraitData in ipairs(traitsToProcess) do
 		local persistentValues = {}
 		for i, key in pairs(PersistentTraitKeys) do
+			print(PersistentTraitKeys)
 			persistentValues[key] = currentTraitData[key]
 		end
 
