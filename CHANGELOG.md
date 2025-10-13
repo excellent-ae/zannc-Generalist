@@ -1,6 +1,9 @@
 # Changelog
 
 ## [Unreleased]
+Removed print statement accidentally left in.
+Moved the Untapped Potential option outside of Grasp Mod
+Hopefully made zoom in/out more consistent
 
 ## [2.1.2] - 2025-10-05
 

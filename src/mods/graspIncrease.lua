@@ -1,8 +1,7 @@
 local function setGraspAmount(value)
-	-- In case the user is dumb and sets grasp amount to less than 10
 	if value < 10 then
 		config.MaxGrasp = 10
-		print("Grasp Amount is less than 10.... why... setting to the game default of 10")
+		print("Grasp Amount is less than 10....setting to the game default of 10")
 	end
 end
 
@@ -57,12 +56,5 @@ function DrawMaxGrasp()
 	local value, selected = rom.ImGui.SliderInt("Grasp Amount", config.MaxGrasp, 10, maxCardCost)
 	if selected then
 		config.MaxGrasp = value
-	end
-
-	rom.ImGui.Spacing()
-
-	local value, selected = rom.ImGui.Checkbox("Disable 'Untapped Potential' when you can select more cards.", config.DisableGraspCheck)
-	if selected then
-		config.DisableGraspCheck = value
 	end
 end

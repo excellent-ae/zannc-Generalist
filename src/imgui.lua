@@ -9,7 +9,7 @@ local function addSeperatorSpacing()
 	rom.ImGui.Spacing()
 end
 
-local function ImGUICheckbox(label, configKey, func)
+local function ImGUICheckbox(label, configKey, func, spacing)
 	local value, checked = rom.ImGui.Checkbox(label, config[configKey])
 
 	if checked then
@@ -18,19 +18,30 @@ local function ImGUICheckbox(label, configKey, func)
 
 	func()
 
-	addSeperatorSpacing()
+	if spacing == true then
+		addSeperatorSpacing()
+	end
 end
 
 local function drawMenu()
-	ImGUICheckbox("Enable Starting Room Drop Manager", "StartingDropMod", DrawBoonManager)
+	ImGUICheckbox("Enable Starting Room Drop Manager", "StartingDropMod", DrawBoonManager, true)
 
-	ImGUICheckbox("Enable Max Grasp Changes", "GraspCardMod", DrawMaxGrasp)
+	ImGUICheckbox("Enable Max Grasp Changes", "GraspCardMod", DrawMaxGrasp, false)
 
-	ImGUICheckbox("Enable Pom of Power Mod", "StackingMod", DrawPomUpgrades)
+	rom.ImGui.Spacing()
 
-	ImGUICheckbox("Enable Hammer to drop more than 2 times per run.", "HammerRateMod", DrawHammerDrops)
+	local value, selected = rom.ImGui.Checkbox("Disable 'Untapped Potential' when you can select more cards.", config.DisableGraspCheck)
+	if selected then
+		config.DisableGraspCheck = value
+	end
 
-	ImGUICheckbox("Enable Consumable Mod", "ConsumableMod", DrawConsumableChanges)
+	addSeperatorSpacing()
+
+	ImGUICheckbox("Enable Pom of Power Mod", "StackingMod", DrawPomUpgrades, true)
+
+	ImGUICheckbox("Enable Hammer to drop more than 2 times per run.", "HammerRateMod", DrawHammerDrops, true)
+
+	ImGUICheckbox("Enable Consumable Mod", "ConsumableMod", DrawConsumableChanges, true)
 
 	ImGUICheckbox("Enable Zoom Mod", "ZoomMod", DrawZoomMod)
 end

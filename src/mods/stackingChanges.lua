@@ -41,7 +41,6 @@ local function RemoveAddTraits()
 	for i, currentTraitData in ipairs(traitsToProcess) do
 		local persistentValues = {}
 		for i, key in pairs(PersistentTraitKeys) do
-			print(PersistentTraitKeys)
 			persistentValues[key] = currentTraitData[key]
 		end
 
