@@ -1,6 +1,9 @@
 # Changelog
 
 ## [Unreleased]
+
+## [2.1.3] - 2025-10-13
+
 Removed print statement accidentally left in.
 Moved the Untapped Potential option outside of Grasp Mod
 Hopefully made zoom in/out more consistent
@@ -60,7 +63,8 @@ Manage Starting Boon for runs so you can see only what you want to see at the st
 Manage your maximum grasp to allow you to select all the cards<br>
 Option to remove diminishing returns from all Boons and Change Level increase for Poms
 
-[unreleased]: https://github.com/excellent-ae/zannc-Generalist/compare/2.1.2...HEAD
+[unreleased]: https://github.com/excellent-ae/zannc-Generalist/compare/2.1.3...HEAD
+[2.1.3]: https://github.com/excellent-ae/zannc-Generalist/compare/2.1.2...2.1.3
 [2.1.2]: https://github.com/excellent-ae/zannc-Generalist/compare/2.1.1...2.1.2
 [2.1.1]: https://github.com/excellent-ae/zannc-Generalist/compare/2.1.0...2.1.1
 [2.1.0]: https://github.com/excellent-ae/zannc-Generalist/compare/2.0.0...2.1.0
